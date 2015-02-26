@@ -88,6 +88,14 @@ else {
 				proxyUrl: 'http://localhost:9000'
 			}, config);
 
+			//
+			// Allow override functionalSuites via command line.
+			// This feature is introduce at intern-2.2 but not cucumber branch.
+			//
+			if (!!args.functionalSuites) {
+				config.functionalSuites = args.functionalSuites.split(',')
+			}
+
 			// If the `baseUrl` passed to the loader is a relative path, it will cause `require.toUrl` to generate
 			// non-absolute paths, which will break the URL remapping code in the `get` method of `lib/wd` (it will
 			// slice too much data)
